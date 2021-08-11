@@ -1,0 +1,93 @@
+
+/*estilos para la tabla*/
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+table th {
+  background-color: #000000;
+  color: rgb(255, 0, 0);
+}
+
+body {
+  background-color: #c6f6ff;
+}
+
+h6 {
+  text-align: left;
+  margin-left: 60px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.table-rwd {
+  font-size: .85em;
+  border: 1px solid rgba(181, 213, 144, 0.5);
+  color: rgb(0, 0, 0);
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-rwd td,
+.table-rwd th {
+  padding: .8em;
+  border-bottom: 1px solid rgba(59, 185, 243, 0.87);
+}
+
+.table-rwd th {
+  background: #000000;
+  color: rgb(255, 0, 0);
+  font-weight: normal;
+  text-align: center;
+}
+
+.table-rwd td {
+  text-align: center;
+}
+
+.table-rwd td:first-of-type:before {
+  content: "";
+}
+
+.table-rwd td:first-of-type:after {
+  content: "";
+}
+
+.table-rwd tr:hover {
+  background: rgba(181, 213, 144, 0.2);
+}
+
+.table-rwd tr td:nth-child(2n) {
+  background: rgba(181, 213, 144, 0.2);
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.table-rwd {
+  min-width: 900px;
+}
+
+.table-rwd td:second-child {
+  position: absolute;
+  background: rgb(255, 0, 0);
+  width: 8em;
+}
+
+.table-rwd th:first-child {
+  width: 8em;
+}
+
+.table-rwd tr:hover td:first-child {
+  background: #6faeee;
+  color: #fff;
+}
+
+.table-rwd tr:nth-child(2) td:first-child {
+  box-shadow: 0 -2.7em 0 -6px #1A8CFF, -6px -2.7em 0 -6px #1A8CFF;
+}
+

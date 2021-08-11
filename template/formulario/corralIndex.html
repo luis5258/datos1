@@ -1,0 +1,235 @@
+{% extends 'base/formulario.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content%}
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <script src="http://code.jquery.com/jquery-1.0.4.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#corral").keyup(function () {
+          var value = $(this).val();
+          $("#corral1").val(value);
+        });
+      });
+    </script>
+  </head>
+
+<body>
+{% if perms.datos.add_corral %}
+    {% if formulario.errors %}
+    <div class="alert alert-danger" role="alert">
+        Error, no se pudo registrar
+    </div>
+    {% endif %}
+
+    <form action="{% url 'guardarCorral' %}" method="POST" class="container mt-5">
+      {% csrf_token %}
+  
+      <h1><a class="nav-link text-dark" href="{% url 'corraldate' %}">CORRALES</a></h1>
+  
+      {% if mensaje %}
+      <div class="alert alert-success" role="alert">
+        Se ha registrado exitosamente
+      </div>
+      {% endif %}
+  
+      <div class="col">
+        <h6>CORRAL</h6>
+        <input type="text" class="form-control" placeholder="Nombre del corral" name="corral" autocomplete="off" required>
+      </div>
+  
+      <p></p>
+  
+      <div class="col">
+        <h6>CLIENTE</h6>
+        <div class="input-group mb-1 ">
+          <input class="form-control" id="corral" list="datalistOptions3" placeholder="Buscar cliente..." name="cliente"
+            aria-describedby="button-addon2" autocomplete="off" required>
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2"><a
+              href="{% url 'clientedate' %}">Agregar</button></a>
+          <datalist id="datalistOptions3">
+            {% for Cliente in Clientes %}
+            <option value="{{ Cliente.nombre }} ">
+              {% endfor %}
+          </datalist>
+        </div>
+      </div>
+  
+      <p></p>
+  
+      <div class="col">
+        <div class="row">
+          <div class="col-6">
+            <h6>ESTADO</h6>
+            <div class="input-group mb-1 ">
+              <input class="form-control"  list="datalistOptions4" placeholder="Agregar status..."
+                name="tipoStatus" aria-describedby="button-addon2" autocomplete="off" required>
+              <datalist id="datalistOptions4">
+                {% for status in statu %}
+                <option value="{{ status.estado }}">
+                  {% endfor %}
+              </datalist>
+            </div>
+          </div>
+  
+          <p></p>
+  
+          <div class="col-6">
+            <h6>FECHA</h6>
+            <input type="date" class="form-control" placeholder="Fecha" name="fecha">
+          </div>
+  
+          <p></p>
+  
+          <input type="hidden"  class="form-control" id="corral1" list="datalistOptions3" placeholder="Buscar cliente..."
+          name="cliente" aria-describedby="button-addon2" autocomplete="off" required>
+        <datalist id="datalistOptions3">
+          {% for Cliente in Clientes %}
+          <option value="{{ Cliente.nombre }} ">
+            {% endfor %}
+        </datalist>
+    
+        </div>
+  
+      </div>
+  
+      <p></p>
+  
+      <div class="col">
+        <button type="submit" class="btn btn-info">Guardar</button></a>
+        <a href="{% url 'inicio' %}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+      </div>
+  
+  
+  
+  
+    </form>
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+  
+    <P></P>
+  
+    {% else %}
+  
+    <style>
+      h1 {
+        margin-top: 50px;
+        text-align: center;
+      }
+  
+      h5 {
+        margin-top: 10px;
+        text-align: center;
+      }
+  
+      h6 {
+        text-align: center;
+  
+      }
+    </style>
+  
+    <H1>NO ESTAS AUTORIZADO PARA AGREGAR CORRALES</H1>
+    <H5>PONGASE EN CONTACTO CON EL ADMIN PARA DESBLOQUEAR ACCESO </H5>
+    <h6><a class="nav-link  text-danger" href="{% url 'corrales' %}">Toque para volver</a></h6>
+  
+    {% endif %}
+    <P></P>
+{% if perms.datos.view_corral %}
+    <body class="body">
+
+        <div class=" table-container">
+            <table id="example" class="table-rwd" style="width: 50%">
+                <thead>
+                  <tr>
+                    <th scope="col"><a class="text-light" href="{% url 'corrales' %}">ID</a></th>
+                    <th scope="col">CORRAL</th>
+                    <th scope="col"><a class="text-light" href="{% url 'clientes' %}">CLIENTE</a></th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">FECHA</th>
+                    <!-- <th scope="col">Editar</th> -->
+                    <!-- <th scope="col">Eliminar</th>   -->
+                  </tr>
+                </thead>
+          
+                <tbody>
+                  {% for Corral in Corrals %}
+                  <tr>
+                    <th scope="row">{{ Corral.id }}</th>
+                    <td>{{ Corral.corral }}</td>
+                    <td>{{ Corral.cliente }}</td>
+                    <td>{{ Corral.tipoStatus }}</td>
+                    <td>{{ Corral.fecha}}</td>
+                    <!-- <td><a class="btn btn-warning" href="{% url 'editarCorral' Corral.id %}">Editar</a></td>   -->
+                    <!-- <td><a class="btn btn-danger" href="{% url 'eliminar' Corral.id%}">Eliminar</a></td>  -->
+                  </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+        <script>
+          let temp = $("#btn1").clone();
+          $("#btn1").click(function () {
+            $("#btn1").after(temp);
+          });
+      
+          $(document).ready(function () {
+            var table = $('#example').DataTable({
+              orderCellsTop: true,
+              fixedHeader: true
+            });
+      
+            //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+            $('#example thead tr').clone(false).appendTo('#example thead');
+      
+            $('#example thead tr:eq(1) th').each(function (i) {
+              var title = $(this).text(); //es el nombre de la columna
+              $(this).html('<input type="text" placeholder="Search...' + title + '" />');
+      
+              $('input', this).on('keyup change', function () {
+                if (table.column(i).search() !== this.value) {
+                  table
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+                }
+              });
+            });
+          });
+        </script>
+    </body>
+    <p></p>
+    {% else %}
+    <style>
+        h1 {
+          margin-top: 50px;
+          text-align: center;
+        }
+      
+        h5 {
+          margin-top: 10px;
+          text-align: center;
+        }
+      
+        h6 {
+          text-align: center;   
+        }
+      </style>
+      
+      <H1>NO ESTAS AUTORIZADO PARA VER DATOS DE OPERADOR</H1>
+      <H5>PONGASE EN CONTACTO CON EL ADMIN PARA DESBLOQUEAR ACCESO </H5>
+      <h6><a class="nav-link  text-danger" href="{% url 'inicio' %}">Toque para volver</a></h6>
+{% endif %}
+
+{% endblock %}

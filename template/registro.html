@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<form class="form" method="post">
+    <h2 class="form-titulo">REGISTRO</h2>
+    {% csrf_token %}
+
+    <!-- {{ form.as_p }} -->
+    <div class="contenedor-inputs">
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="username" placeholder="Nombre de usuario" autocomplete="off"
+                required>
+        </div>
+        <p></p>
+        <div class="col-md-6">
+            <input type="password" class="form-control" name="password1" placeholder="Contraseña" required>
+        </div>
+        <p></p>
+        <div class="col-md-6">
+            <input type="password" class="form-control" name="password2" placeholder="Confirmar Contraseña" required>
+        </div>
+        <p></p>
+    </div>
+    
+    <button class="btn-enviar btn-primary" type="submit" id="submit">Registrarse</button>
+</form>
+
+
+
+
+{% endblock %}

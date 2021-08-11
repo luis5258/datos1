@@ -1,0 +1,45 @@
+{% extends 'base/index.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+    No se pudo actualizar
+</div>
+{% endif %}
+
+
+<form action="{% url 'actualizar' registros.id %}" method="POST" class="container mt-5">
+    <h1>Actualizar datos de la lista de surtidos</h1>
+    {% csrf_token %}
+
+
+    {% if mensaje %}
+    <div class="alert alert-success" role="alert">
+        Se ha actualizado exitosamente
+    </div>
+    {% endif %}
+
+    {{ form|crispy }}
+
+    <p></p>
+    <label>
+        Status
+    </label>
+
+
+    <div>
+        <select class="form-select col-12" name="estado">
+            <option value="Pendiente" selected>Pendiente</option>
+            <option value="Tolva 1">Tolva 1</option>
+            <option value="Tolva 2">Tolva 2</option>
+            <option value="Tolva 3">Tolva 3</option>
+        </select>
+    </div>
+    <P></P>
+    <button type="submit" class="btn btn-success">Guardar</button></a>
+    <a href="{% url 'lista' %}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+    <p></p>
+
+</form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base/index.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% if formulario.errors %}
+<div class="alert alert-danger" role="alert">
+  Error, no se pudo registrar
+</div>
+{% endif %}
+
+
+<form action="{% url 'actualizarCorral' Corrals.id %}" method="POST" class="container mt-5">
+  {% csrf_token %}
+  <h1>REGISTRO DE CORRALES</h1>
+
+  {% if mensaje %}
+  <div class="alert alert-success" role="alert">
+    Se ha registrado exitosamente
+  </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="col">
+      <label>Corral</label>
+      <input type="text" class="form-control" placeholder="Nombre del corral" name="corral">
+    </div>
+    <div class="col">
+      <label>Cliente</label>
+      <input type="text" class="form-control" placeholder="Asignar a Cliente" name="cliente">
+    </div>
+  </div>
+
+  <p></p>
+
+  <label>Asigne un estado</label>
+  <p></p>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="tipoStatus" id="flexRadioDefault1" value="Activo" checked>
+    <label class="form-check-label" for="flexRadioDefault1">
+      Activo
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="tipoStatus" id="flexRadioDefault2" value="Baja">
+    <label class="form-check-label" for="flexRadioDefault2">
+      Baja
+    </label>
+  </div>
+
+  <p></p>
+
+  <div class="row">
+    <div class="col">
+      <label>Fecha</label>
+      <input type="date" class="form-control" placeholder="Fecha" name="fecha">
+    </div>
+  </div>
+
+  <p></p>
+
+  <button type="submit" class="btn btn-info">Guardar</button></a>
+  <a href="{% url 'corrales' %}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+</form>
+{% endblock %}

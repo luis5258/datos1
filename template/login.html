@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<form class="form" method="post">
+    <h2 class="form-titulo">INICIAR SESIÓN</h2>
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <p></p>
+    <button class="btn-enviar btn-success" type="submit" id="submit">Iniciar sesión</button>
+</form>
+<p></p>
+<h6>SuperUser: luis, 1234</h6>
+<h6>cliente: alfonso, la123456</h6>
+<h6>corral: arellano, la123456</h6>
+{% endblock %}

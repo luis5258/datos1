@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.header{
+    width: 100%;
+    height: 65px;
+    background: #fff;
+    position: fixed;
+}
+.container{
+    max-width: 1100px;
+    margin: auto;
+}
+.logo{
+    float: left;
+    line-height: 65px;
+}
+.menu{
+    float: right;
+    line-height: 65px;
+}
+.menu ul{
+    display: flex;
+    list-style: none;
+}
+.menu a{
+    display: block;
+    padding: 0px 20px;
+    text-decoration: none;
+    color: #6d6d6d;
+    transition: all 500ms ease;
+}
+.menu a:hover{
+    background: #cc673b;
+    color: #fff;
+}
+.menu .submenu{
+    background: #fff;
+    box-shadow: 3px 10px 10px rgba(0,0,0,0.2);
+    display: none;
+}
+.menu .submenu li a{
+    line-height: 50px;
+}
+.menu ul li a:hover + ul, .menu .submenu:hover{
+    display: block;
+}
+/*estilos para la portada*/
+.portada{
+    width: 100%;
+    height: 520px;
+    background: url("https://png.pngtree.com/thumb_back/fw800/background/20201019/pngtree-polygonal-vector-background-horizontal-banner-for-web-pages-presentations-layouts-covers-image_422832.jpg");
+    background-size: 100vw 100vh;
+}
+
+
+
