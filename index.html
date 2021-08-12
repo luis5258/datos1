@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<title>ALIMENTO</title>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="vista tabla.css">
+	</head>
+	<body>
+		
+		
+		
+		<div class="form">
+			<form action="programa.php" method="POST">
+				<center><h1> REGISTRO DE ALIMENTO</h1></center>
+
+
+
+				<table border="1">
+					<center>
+					<p><a href="tabla.html"><img src="b2.png" width="20%" height="15%">
+						<a href="inicio.html"><img src="b3.png" width="20%" height="40%">
+					<a href="ganado.html"><img src="b.png" width="20%" height="10%"></a>
+					
+				</center>
+				<tr>
+					<td colspan="4"><label>Registro de Alimento</label></td>
+				</tr>
+
+				<tr><td colspan="4"><label>Ingresar datos</label></td></tr>
+				<tr>
+					<td><label>IDENTIFICACIÓN</label></td><td><input type="text" value="" maxlength="10" name = "Identificacion" autocomplete="on" placeholder="Identificación" required=""></td>
+					<td><label>PESO</label></td><td><input type="text" value="" maxlength="10" placeholder="Peso(Kg)" name = "Peso" required=""></td>
+				</tr>
+				<tr>
+					<td><label>ALIMENTO</label></td><td><select name = "Alimento" id="Alimento" data-placeholder="-SELECCIONE ALIMENTO" required>
+					<option value="Alimento1"> Alimento 1
+					<option value="Alimento2"> Alimento 2
+					<option value="Alimento3"> Alimento 34
+					<option value="Alimento4"> Alimento 4
+					<option value="Alimento5"> Alimento 5
+					<option value="Alimento6"> Alimento 6
+					<option value="Alimento7"> Alimento 7
+					<option value="Alimento8"> Alimento 8
+					<option value="Alimento9"> Alimento 9
+					<option value="Alimento10"> Alimento 10
+				</option>
+				</select>
+					<td><label>FECHA</label></td><td><input type="date" name="day" required/></td>
+			</td>
+
+				</tr>
+				
+				<tr>
+					<td><label>MENSAJE</label></td><td><input type="text" value="" maxlength="10" name = "mensaje" placeholder="Mensaje"></td>	
+				</tr>
+
+
+
+				<tr><td colspan="4" align="center">
+					<input type="submit" value="Limpiar"name="limpiardatos">
+					<input type="submit" value="Grabar"name="grabardatos">
+					<input type="submit" value="Modificar"name="modificardatos">
+					<input type="submit" value="Eliminar"name="eliminardatos">
+				</td></tr>
+
+			
+
+
+					<center><input type="submit" value="Enviar" name="enviar"></center>
+
+
+
+			</form>
+		</div>
+	</body>
+</html>
