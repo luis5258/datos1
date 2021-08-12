@@ -69,7 +69,7 @@ WSGI_APPLICATION = 'registroDB.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
+    #  'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3', 
   
@@ -83,10 +83,11 @@ DATABASES = {
         'NAME': 'dbweb',
         'OPTIONS': {
         'init_command': "SET sql_mode = 'STRICT_TRANS_TABLES'"}
+  
         
    }
 }
-#  
+# 
  #
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -123,7 +124,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # Default primary key field type
